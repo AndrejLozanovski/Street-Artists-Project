@@ -1,0 +1,95 @@
+@media (max-width: 425px) {
+  #artistsHomePage .artist-panel {
+    display: none;
+    position: fixed;
+    background-color: #a16a5e;
+    padding: 20px;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #fcebd5;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 50px;
+    letter-spacing: 3.2px;
+  }
+
+  #artistsHomePage .artist-panel ul {
+    list-style: none;
+    padding: 0;
+    background-color: #a16a5e;
+  }
+
+  #artistsHomePage .items-sold,
+  .income {
+    font-family: Roboto;
+    width: 100%;
+    text-align: center;
+    border-radius: 2px;
+    color: #fcebd5;
+  }
+
+  #artistsHomePage .title {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+
+  #artistsHomePage .item-numbers {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+  }
+
+  #artistsHomePage .auction-item {
+    font-family: Roboto;
+    text-align: center;
+    color: #fcebd5;
+    border-radius: 2px;
+  }
+
+  .days {
+    display: flex;
+    width: 100px;
+    height: 27px;
+    padding-left: 17.5px;
+    padding-right: 17.5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    flex-shrink: 0;
+    border-radius: 2px;
+    background: #a16a5e;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+    color: #fcebd5;
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .active-btn {
+    background-color: #d44c2e;
+  }
+
+  .days:focus {
+    background-color: #d44c2e;
+  }
+
+  #artistsHomePage .income-history h3 {
+    color: #a16a5e;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+}

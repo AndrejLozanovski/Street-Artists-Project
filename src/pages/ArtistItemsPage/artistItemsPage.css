@@ -1,0 +1,149 @@
+@media (max-width: 425px) {
+  #artistsItemsPage {
+    font-family: Roboto;
+  }
+
+  #artistsItemsPage .add-new-item {
+    border-radius: 2px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  #artistsItemsPage .content-border {
+    height: 100px;
+    border: 2px dashed var(--Primary-Default, #a16a5e);
+  }
+
+  #artistsItemsPage .artist-panel {
+    display: none;
+    position: fixed;
+    background-color: #a16a5e;
+    padding: 20px;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #fcebd5;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 50px;
+    letter-spacing: 3.2px;
+  }
+
+  #artistsItemsPage .artist-panel ul {
+    list-style: none;
+    padding: 0;
+    background-color: #a16a5e;
+  }
+
+  #artistsItemsPage #artistsItemsContainer .card span {
+    color: #fcebd5;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: inline-flex;
+    padding: 3px 8px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  #artistsItemsPage #artistsItemsContainer .card-title {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  #artistsItemsPage #artistsItemsContainer .card-date {
+    color: #e09686;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  #artistsItemsPage #artistsItemsContainer .card-text {
+    color: #a16a5e;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  #artistsItemsPage #artistsItemsContainer .send-to-auction {
+    border-radius: 2px;
+    background: #1b59ac;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+    border: 0;
+    padding: 9px 17.5px;
+    color: #f8f8f8;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  #artistsItemsPage #artistsItemsContainer .publish {
+    border-radius: 2px;
+    background: #e5e5e5;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+    border: 0;
+    padding: 9px 17.5px;
+    color: #5a5a5a;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  #artistsItemsPage #artistsItemsContainer .unpublish {
+    border-radius: 2px;
+    background: #1bac6f;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+    border: 0;
+    padding: 9px 17.5px;
+    color: #f8f8f8;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  #artistsItemsPage #artistsItemsContainer .remove-item {
+    border-radius: 2px;
+    background: #d44c2e;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+    border: 0;
+    padding: 9px 17.5px;
+    color: #f8f8f8;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  #artistsItemsPage #artistsItemsContainer .edit-item {
+    border-radius: 2px;
+    background: #fcebd5;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+    border: 0;
+    padding: 9px 17.5px;
+    color: #a16a5e;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  #artistsItemsPage #artistsItemsContainer .card-footer:last-child {
+    border-radius: 0px 0px 2px 2px;
+  }
+
+  #artistsItemsPage #artistsItemsContainer .card {
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  }
+}

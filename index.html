@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StreetArtists</title>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <!-- Latest compiled and minified Bootstrap 4.6 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS script -->
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./src/pages/LandingPage/landingPage.css" />
+    <link rel="stylesheet" href="./src/pages/VisitorHomePage/visitorHomePage.css" />
+    <link rel="stylesheet" href="./src/pages/VisitorListing/visitorListing.css" />
+    <link rel="stylesheet" href="./src/pages/ArtistHomePage/artistHomePage.css" />
+    <link rel="stylesheet" href="./src/pages/ArtistItemsPage/artistItemsPage.css" />
+    <link rel="stylesheet" href="./src/pages/ArtistNewItemPage/artistNewItemPage.css" />
+    <link rel="stylesheet" href="./src/pages/CaptureImage/captureImage.css" />
+    <script type="module" src="main.js"></script>
+    <!-- Latest Font-Awesome CDN -->
+  </head>
+  <body>
+    <header class="t-dark"></header>
+
+    <section class="page" id="landingPage">
+      <div class="d-flex flex-column align-items-center">
+        <div class="logo pb-4 pt-4">
+          <img src="./src/images/logo.png" alt="logo" />
+        </div>
+
+        <div>
+          <div class="joinAs d-flex align-items-center bgc-light t-dark" id="joinAsArtist">
+            <div class="content-artist">
+              Join as Artist
+              <br />
+              <select class="bgc-light t-dark" id="artists">
+                <option hidden>Choose</option>
+              </select>
+            </div>
+          </div>
+          <div class="joinAs d-flex align-items-center bgc-dark t-light" id="joinAsVisitor">
+            <div class="content-visitor">Join as Visitor</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="visitorHomePage">
+      <div class="banner py-5 px-3 bgc-lighter d-flex justify-content-between align-items-center">
+        <h1 class="t-dark">Looking for masterpiece?</h1>
+        <div class="find-masterpiece t-light">Find one now!</div>
+      </div>
+
+      <div class="slider-container py-3 bgc-light">
+        <div class="slider-masterpiece">
+          <div class="masterpiece">
+            <img src="./src/images/sliderImage1.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage3.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage4.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage1.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage3.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage4.jpeg" id="slideImage" />
+          </div>
+
+          <div class="masterpiece">
+            <img src="./src/images/sliderImage3.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage4.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage1.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage3.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage4.jpeg" id="slideImage" />
+          </div>
+        </div>
+
+        <div class="slider-masterpiece pt-3">
+          <div class="masterpiece reverse">
+            <img src="./src/images/sliderImage1.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage3.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage4.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage1.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage3.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage4.jpeg" id="slideImage" />
+          </div>
+
+          <div class="masterpiece reverse">
+            <img src="./src/images/sliderImage3.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage4.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage1.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage3.jpeg" id="slideImage" />
+            <img src="./src/images/sliderImage4.jpeg" id="slideImage" />
+          </div>
+        </div>
+      </div>
+
+      <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-interval="10000">
+            <div class="carousel-content d-flex justify-content-center align-items-center">
+              <img src="./src/images/carouselImage.svg" class="carousel-image" alt="..." />
+              <div
+                class="carousel-text w-50 d-flex justify-content-center align-items-center"
+                style="border-right: 1px solid #a16a5e"
+              >
+                <p class="m-0 p-3 pt-4 w-50 text-center content-image">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet
+                  luctus venenatis.
+                </p>
+              </div>
+
+              <div class="carousel-text w-50 d-flex justify-content-center">
+                <p class="m-0 w-50 t-dark py-4 text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet
+                  luctus venenatis, lectus magna fringilla urna, porttitor
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" data-interval="2000">
+            <div class="carousel-content d-flex justify-content-center align-items-center">
+              <img src="./src/images/carouselImage.svg" class="carousel-image" alt="..." />
+              <div
+                class="carousel-text w-50 d-flex justify-content-center align-items-center"
+                style="border-right: 1px solid #a16a5e"
+              >
+                <p class="m-0 p-3 pt-4 w-50 text-center content-image">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet
+                  luctus venenatis.
+                </p>
+              </div>
+
+              <div class="carousel-text w-50 d-flex justify-content-center">
+                <p class="m-0 w-50 t-dark py-4 text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet
+                  luctus venenatis, lectus magna fringilla urna, porttitor
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-content d-flex justify-content-center align-items-center">
+              <img src="./src/images/carouselImage.svg" class="carousel-image" alt="..." />
+              <div
+                class="carousel-text w-50 d-flex justify-content-center align-items-center"
+                style="border-right: 1px solid #a16a5e"
+              >
+                <p class="m-0 p-3 pt-4 w-50 text-center content-image">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet
+                  luctus venenatis.
+                </p>
+              </div>
+
+              <div class="carousel-text w-50 d-flex justify-content-center">
+                <p class="m-0 w-50 t-dark py-4 text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet
+                  luctus venenatis, lectus magna fringilla urna, porttitor
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#carouselExampleInterval"
+          role="button"
+          data-slide="prev"
+        >
+          <img src="./src/images/sliderLeft.svg" alt="slider left" aria-hidden="true" />
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselExampleInterval"
+          role="button"
+          data-slide="next"
+        >
+          <img src="./src/images/sliderRight.svg" alt="slider right" aria-hidden="true" />
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="page bgc-light" id="visitorListing">
+      <div class="pt-5" id="vistorListingCardContainer"></div>
+      <img src="./src/images/filterIcon.svg" class="filter" alt="filter Icon" />
+
+      <div id="filterPanel" class="filter-panel">
+        <div class="filter-values t-normal">
+          <div class="header d-flex justify-content-between pb-5">
+            <h1 class="m-0 t-light">Filter by</h1>
+            <img src="./src/images/closeIcon.svg" class="close" alt="close Icon" />
+          </div>
+
+          <div class="filter-title pb-3">
+            <p class="m-0 pb-3">By Item Title</p>
+            <input type="text" id="title" />
+            <div class="pb-3"></div>
+            <hr />
+          </div>
+
+          <div class="filter-artist pb-4">
+            <p class="m-0 pb-3">By Artist</p>
+            <select name="" id="artist">
+              <option hidden>Choose</option>
+            </select>
+            <div class="pb-3"></div>
+            <hr />
+          </div>
+
+          <div class="filter-price pb-4">
+            <p class="m-0 pb-3">By Price</p>
+            <div class="min-max d-flex justify-content-between">
+              <div class="d-flex">
+                <p class="m-1">Min:</p>
+                <input type="text" id="minPrice" />
+              </div>
+              <div class="d-flex">
+                <p class="m-1">Max:</p>
+                <input type="text" id="maxPrice" />
+              </div>
+            </div>
+            <div class="pb-3"></div>
+            <hr />
+          </div>
+
+          <div class="filter-type pb-4">
+            <p class="m-0 pb-3">By Type</p>
+            <select name="" id="type">
+              <option hidden>Choose</option>
+            </select>
+            <div class="pb-3"></div>
+            <hr />
+          </div>
+
+          <img src="./src/images/filterSaveIcon.svg" class="saveFilter" alt="save Icon" />
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="artistsHomePage">
+      <div class="artist-panel" id="artistPanelHomePage">
+        <ul>
+          <li class="home-menu">Home</li>
+          <li class="items-menu">Items</li>
+          <li class="auction-menu">Auction</li>
+        </ul>
+      </div>
+
+      <div class="widgets bgc-light p-1">
+        <div class="d-flex justify-content-between">
+          <div class="items-sold bgc-dark m-3 p-3">
+            <p class="title m-0">Total Items Sold</p>
+            <p class="item-numbers pt-2" id="itemsSold"></p>
+          </div>
+
+          <div class="income bgc-dark m-3 p-3">
+            <p class="title m-0">Total Income</p>
+            <p class="item-numbers pt-4" id="totalIncome"></p>
+          </div>
+        </div>
+
+        <div class="auction-item bgc-orange m-3 p-3">
+          <p class="title m-0">Live Auctioning Item</p>
+          <p class="item-numbers" id="itemAuction">$1200</p>
+          <p class="title m-0">current bid</p>
+        </div>
+      </div>
+
+      <div class="income-history p-3">
+        <h3>Display my income for last</h3>
+        <div class="days-history d-flex justify-content-between">
+          <button class="days" id="oneWeek">7 days</button>
+          <button class="days active-btn" id="twoWeeks">14 days</button>
+          <button class="days" id="oneMonth">30 days</button>
+        </div>
+      </div>
+      <div class="pb-3"></div>
+      <canvas id="myChart"></canvas>
+    </section>
+
+    <section class="page bgc-light" id="artistsItemsPage">
+      <div class="artist-panel" id="artistPanelItemsPage">
+        <ul>
+          <li class="home-menu">Home</li>
+          <li class="items-menu">Items</li>
+          <li class="auction-menu">Auction</li>
+        </ul>
+      </div>
+
+      <div class="pt-4">
+        <div class="add-new-item p-3 bgc-lighter">
+          <div
+            class="content-border text-center d-flex justify-content-center align-items-center"
+            id="addNewItem"
+          >
+            <p class="m-0 t-dark">+ Add new Item</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4" id="artistsItemsContainer"></div>
+    </section>
+
+    <section class="page" id="artistsNewItemPage">
+      <div class="artist-panel" id="artistPanelNewItemPage">
+        <ul>
+          <li class="home-menu">Home</li>
+          <li class="items-menu">Items</li>
+          <li class="auction-menu">Auction</li>
+        </ul>
+      </div>
+
+      <div class="new-items" id="newItem">
+        <form id="formNewItem">
+          <div class="item-values p-3">
+            <div class="header d-flex justify-content-between pb-3">
+              <h1 class="m-0 t-light">Add new Item</h1>
+              <div class="published d-flex align-items-center">
+                <label for="published" class="mx-2">Is published</label>
+                <input type="checkbox" class="bgc-dark" name="" id="itemIsPublished" checked />
+              </div>
+            </div>
+
+            <div class="item-title">
+              <p class="m-0">Title</p>
+              <input type="text" class="w-100 input-style" id="itemTitle" />
+              <div class="pb-3"></div>
+            </div>
+
+            <div class="item-description">
+              <p class="m-0">Description</p>
+              <textarea
+                name=""
+                id="itemDescription"
+                cols="30"
+                rows="3"
+                required
+                class="w-100 input-style"
+              ></textarea>
+              <div class="pb-3"></div>
+            </div>
+
+            <div class="item-type">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <p class="m-0">Type</p>
+                  <select name="" id="itemType" required class="input-style">
+                    <option value="" hidden>choose</option>
+                  </select>
+                </div>
+
+                <div>
+                  <p class="m-0">Price</p>
+                  <input type="text" required class="input-style" id="itemPrice" />
+                </div>
+              </div>
+              <div class="pb-3"></div>
+            </div>
+
+            <div class="item-image">
+              <p class="m-0">Image URL</p>
+              <input type="text" required class="w-100 input-style" id="itemImage" />
+              <p class="text-center m-0 py-2">or</p>
+              <div
+                class="take-snapshot text-center d-flex flex-column align-items-center justify-content-center"
+              >
+                <img src="./src/images/camera.svg" alt="snapshot icon" />
+                <p class="m-0">Take a snapshot</p>
+              </div>
+              <div class="pb-3"></div>
+            </div>
+
+            <div class="buttons py-3 d-flex justify-content-between">
+              <div class="add-item-button">Add new Item</div>
+              <div class="update-item-button">Update</div>
+              <div class="cancel-button">Cancel</div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="page" id="artistsCaptureCamera">
+      <div class="artist-panel" id="artistPanelCaptureCamera">
+        <ul>
+          <li class="home-menu">Home</li>
+          <li class="items-menu">Items</li>
+          <li class="auction-menu">Auction</li>
+        </ul>
+      </div>
+
+      <div class="snapshot">
+        <video id="liveStream" autoplay></video>
+        <canvas id="captureCanvas"></canvas>
+
+        <img src="./src/images/camera.svg" class="pt-4" id="captureImageBtn" alt="snapshot icon" />
+
+        <img id="capturedImage" />
+      </div>
+    </section>
+
+    <section class="page" id="auctionPage">
+      <div id="timer" style="font-size: 20px; font-family: Roboto"></div>
+      <h2 class="p-3">Item on Auction</h2>
+
+      <div id="itemOnAuction"></div>
+
+      <div class="px-3" id="bidding" style="font-family: Roboto">
+        <input type="text" id="biddingInput" />
+        <button id="bidBtn">Bid</button>
+
+        <ul id="biddingHistory"></ul>
+      </div>
+    </section>
+
+    <!-- jQuery library -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="ha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Latest Compiled Bootstrap 4.6 JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+      integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

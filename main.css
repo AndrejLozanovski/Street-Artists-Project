@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+  margin-top: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: "Reenie Beanie", cursive, "Roboto", sans-serif;
+  background-color: #fcebd5;
+}
+
+header {
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* UTILITY */
+.bgc-lighter {
+  background-color: #fcebd5;
+}
+
+.bgc-light {
+  background-color: #edd5bb;
+}
+
+.bgc-dark {
+  background-color: #a16a5e;
+}
+
+.bgc-orange {
+  background-color: #d44c2e;
+}
+
+.bgc-blue {
+  background-color: #1b59ac;
+}
+
+.bgc-green {
+  background-color: #1bac6f;
+}
+
+.bgc-gray {
+  background-color: #e5e5e5;
+}
+
+.t-white {
+  color: #f8f8f8;
+}
+
+.t-normal {
+  color: #edd5bb;
+}
+
+.t-light {
+  color: #fcebd5;
+}
+
+.t-dark {
+  color: #a16a5e;
+}
+
+.t-default {
+  color: #5a5a5a;
+}
+
+/* UTILITY */
+.header-logo {
+  width: 100px;
+  position: absolute;
+  top: -7px;
+  left: 0;
+}
+
+p {
+  margin: 0;
+  margin-right: 50px;
+}
+
+.page {
+  display: none;
+}
+
+#captureCanvas {
+  display: none;
+}
