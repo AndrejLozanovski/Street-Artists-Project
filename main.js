@@ -7,6 +7,27 @@ import { initVisitorHomePage } from "./src/pages/VisitorHomePage/visitorHomePage
 import { initArtistItemsPage } from "./src/pages/ArtistItemsPage/artistItemsPage.js";
 import { initArtistsNewItemPage } from "./src/pages/ArtistNewItemPage/artistNewItemPage.js";
 
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.querySelector("#screenSizeModal");
+
+  function checkScreenWidth() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth > 424) {
+      modal.style.display = "block";
+    } else {
+      modal.style.display = "none";
+    }
+  }
+
+  // Show modal initially
+  checkScreenWidth();
+
+  // Check screen width on resize
+  window.addEventListener("resize", function () {
+    checkScreenWidth();
+  });
+});
+
 // router
 function handleRouter() {
   const hash = location.hash === "" ? "#landingPage" : location.hash; // #landingPage

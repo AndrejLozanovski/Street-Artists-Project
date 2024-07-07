@@ -42,7 +42,11 @@ export function initArtistHomePage() {
   });
 
   hamburgerMenu.addEventListener("click", function () {
-    artistPanel.style.display = artistPanel.style.display === "none" ? "block" : "none";
+    if (artistPanel.style.display === "none" || artistPanel.style.display === "") {
+      artistPanel.style.display = "block";
+    } else {
+      artistPanel.style.display = "none";
+    }
   });
 
   menuHome.addEventListener("click", () => {

@@ -1,101 +1,106 @@
 import { items } from "../../../data/data.js";
 
 export const initAuctionPage = () => {
-  // timer of 2 minutes
   let timeRemaining = localStorage.getItem("timeRemaining")
     ? parseInt(localStorage.getItem("timeRemaining"))
     : 120;
   let timer;
+  let lastBidAmount = 0;
+  let bidInput;
 
-  // function to reset the timer
+  // Function to reset the timer
   function resetTimer() {
     timeRemaining = 120;
     localStorage.setItem("timeRemaining", timeRemaining);
   }
 
-  window.addEventListener("hashchange", function () {
-    if (location.hash === "#auctionPage") {
-      const item = window.currentAuctionItem;
+  // Function to update the timer display
+  function updateTimer() {
+    if (timeRemaining <= 0) {
+      clearInterval(timer);
+      timerElement.textContent = "Auction ended";
 
-      const auctionContainer = document.querySelector("#itemOnAuction");
-
-      auctionContainer.innerHTML = `<div class="card bgc-dark border-0 t-light mb-4">
-                                      <img src="${item.image}" class="card-img-top" alt="${item.title}">
-                                      <div class="card-body">
-                                      <div class=" justify-content-between">
-                                      <h5 class="card-artist" style="font-size:30px">${item.artist}</h5>
-                                      </div>
-                                      <p class="card-title m-0 mb-3" style="font-family: Roboto; font-size:14px" >${item.title}</p>
-                                      <p class="card-text m-0" style="font-family: Roboto; font-size:14px" >${item.description}</p> 
-                                      </div>
-                                  </div>
-                                  <p class="m-0 px-3" style="font-family: Roboto">Starting price: $${item.price}</p>`;
-
-      bidInput.value = item.price;
-
+      // Update the item
+      const currentItem = items.find((item) => item.id === window.currentAuctionItem.id);
+      if (currentItem) {
+        currentItem.priceSold = lastBidAmount;
+        currentItem.dateSold = new Date();
+        currentItem.isAuctioning = false;
+      }
       resetTimer();
 
-      if (timer) {
-        clearInterval(timer);
-      }
+      bidInput.value = "";
+      biddingHistory.innerHTML = "";
 
-      timer = setInterval(() => {
-        timeRemaining--;
+      return;
+    }
 
-        // if the timer is 0 stop the timer and reset it
-        if (timeRemaining <= 0) {
-          clearInterval(timer);
-          timerElement.textContent = "Auction ended";
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+    timerElement.textContent = `Time remaining: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    localStorage.setItem("timeRemaining", timeRemaining);
+  }
 
-          // update the item
-          if (items) {
-            items.priceSold = lastBidAmount;
-            items.dateSold = new Date();
-            items.isAuctioning = false;
-          }
-          resetTimer();
+  function startTimer() {
+    if (timer) {
+      clearInterval(timer);
+    }
+    timer = setInterval(() => {
+      timeRemaining--;
+      updateTimer();
+    }, 1000);
+  }
 
-          // clear the fields
-          bidInput.value = "";
-          biddingHistory.innerHTML = "";
+  function loadAuctionPage() {
+    const item = window.currentAuctionItem;
+    if (!item) return;
 
-          return;
-        }
+    bidInput = document.querySelector("#biddingInput");
+    const auctionContainer = document.querySelector("#itemOnAuction");
+    auctionContainer.innerHTML = `
+      <div class="card bgc-dark border-0 t-light mb-4">
+        <img src="${item.image}" class="card-img-top" alt="${item.title}">
+        <div class="card-body">
+          <div class=" justify-content-between">
+            <h5 class="card-artist" style="font-size:30px">${item.artist}</h5>
+          </div>
+          <p class="card-title m-0 mb-3" style="font-family: Roboto; font-size:14px">${item.title}</p>
+          <p class="card-text m-0" style="font-family: Roboto; font-size:14px">${item.description}</p>
+        </div>
+      </div>
+      <p class="m-0 px-3" style="font-family: Roboto">Starting price: $${item.price}</p>
+    `;
 
-        const minutes = Math.floor(timeRemaining / 60);
-        const seconds = timeRemaining % 60;
-        timerElement.textContent = `Time remaining: ${minutes}:${
-          seconds < 10 ? "0" : ""
-        }${seconds}`;
+    bidInput.value = item.price;
+    startTimer();
+  }
 
-        // store the remaining time in local storage
-        localStorage.setItem("timeRemaining", timeRemaining);
-      }, 1000);
+  window.addEventListener("hashchange", () => {
+    if (location.hash === "#auctionPage") {
+      loadAuctionPage();
     }
   });
 
-  const timerElement = document.querySelector("#timer");
+  if (location.hash === "#auctionPage") {
+    loadAuctionPage();
+  }
 
-  // stop the timer when the page is closed
+  // Stop the timer when the page is closed
   window.addEventListener("beforeunload", function () {
     clearInterval(timer);
   });
 
   const myHeader = document.querySelector("header");
-  const bidBtn = document.querySelector("#bidBtn");
-  const bidInput = document.querySelector("#biddingInput");
-  const biddingHistory = document.querySelector("#biddingHistory");
-
   myHeader.innerHTML = `
-  <div>
-    <img src="./src/images/logo.png" class="header-logo" alt="logo" />
-  </div>
-  <p>Street ARTists</p> 
-  <img src="./src/images/auctionIcon.svg" class="auction-icon" alt="auctionIcon" />`;
-
+    <div>
+      <img src="./src/images/logo.png" class="header-logo" alt="logo" />
+    </div>
+    <p>Street ARTists</p> 
+    <img src="./src/images/auctionIcon.svg" class="auction-icon" alt="auctionIcon" />
+  `;
   myHeader.setAttribute(
     "style",
-    "display: flex; justify-content: space-between; align-items: center;  padding: 16px; position: static; "
+    "display: flex; justify-content: space-between; align-items: center; padding: 16px; position: static;"
   );
 
   const logo = document.querySelector(".header-logo");
@@ -109,13 +114,15 @@ export const initAuctionPage = () => {
     location.hash = "#auctionPage";
   });
 
-  let lastBidAmount = 0;
+  const bidBtn = document.querySelector("#bidBtn");
+  const biddingHistory = document.querySelector("#biddingHistory");
+  const timerElement = document.querySelector("#timer");
 
   bidBtn.addEventListener("click", function () {
     const myBidFormData = new FormData();
     myBidFormData.set("amount", bidInput.value);
 
-    biddingHistory.innerHTML += `<li class="mine">${bidInput.value}</li>`;
+    biddingHistory.innerHTML += `<li class="mine">You: $${bidInput.value}</li>`;
 
     fetch("https://projects.brainster.tech/bidding/api", {
       method: "POST",
@@ -123,16 +130,17 @@ export const initAuctionPage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-
         const isBidding = data.isBidding;
 
         if (isBidding) {
-          biddingHistory.innerHTML += `<li class="bidder" style="margin-left: 200px">${data.bidAmount}</li>`;
+          biddingHistory.innerHTML += `<li class="bidder" style="margin-left: 200px">Bidder: $${data.bidAmount}</li>`;
           bidInput.value = data.bidAmount + 50;
           timeRemaining = 120;
+          lastBidAmount = data.bidAmount;
+          resetTimer();
         }
       });
+
     window.addEventListener("hashchange", function () {
       if (location.hash !== "#auctionPage") {
         resetTimer();
