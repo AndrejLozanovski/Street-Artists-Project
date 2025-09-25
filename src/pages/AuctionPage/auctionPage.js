@@ -7,6 +7,7 @@ export const initAuctionPage = () => {
   let timer;
   let lastBidAmount = 0;
   let bidInput;
+  let isBidding = false;
 
   // Function to reset the timer
   function resetTimer() {
@@ -54,6 +55,11 @@ export const initAuctionPage = () => {
   function loadAuctionPage() {
     const item = window.currentAuctionItem;
     if (!item) return;
+
+    // Reset bidding state
+    isBidding = false;
+    lastBidAmount = item.price;
+    biddingHistory.innerHTML = "";
 
     bidInput = document.querySelector("#biddingInput");
     const auctionContainer = document.querySelector("#itemOnAuction");
@@ -119,9 +125,12 @@ export const initAuctionPage = () => {
   const timerElement = document.querySelector("#timer");
 
   bidBtn.addEventListener("click", function () {
+    if (isBidding) return;
+
     const myBidFormData = new FormData();
     myBidFormData.set("amount", bidInput.value);
 
+    isBidding = true;
     biddingHistory.innerHTML += `<li class="mine">You: $${bidInput.value}</li>`;
 
     fetch("https://projects.brainster.tech/bidding/api", {
@@ -130,21 +139,19 @@ export const initAuctionPage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        const isBidding = data.isBidding;
+        const biddingActive = data.isBidding;
 
-        if (isBidding) {
+        if (biddingActive) {
           biddingHistory.innerHTML += `<li class="bidder" style="margin-left: 200px">Bidder: $${data.bidAmount}</li>`;
           bidInput.value = data.bidAmount + 50;
           timeRemaining = 120;
           lastBidAmount = data.bidAmount;
           resetTimer();
         }
+        isBidding = false;
+      })
+      .catch(() => {
+        isBidding = false;
       });
-
-    window.addEventListener("hashchange", function () {
-      if (location.hash !== "#auctionPage") {
-        resetTimer();
-      }
-    });
   });
 };

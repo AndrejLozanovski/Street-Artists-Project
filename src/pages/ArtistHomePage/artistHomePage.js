@@ -111,11 +111,18 @@ export function initArtistHomePage() {
   itemsSold.innerHTML = `${totalArtistSoldItems}/${totalArtistItems}`;
   totalIncome.innerHTML = `$${sumOfSoldItems}`;
 
-  const labels = generateDateLabels(7);
+  // Get the latest sale date
+  const latestDate = new Date(Math.max(...soldArtistItems.map(item => new Date(item.dateSold))));
 
-  const ctx = document.getElementById("myChart");
+  const labels = [];
+  const chartData = [];
 
-  const chartData = labels.map((label) => {
+  for (let i = 6; i >= 0; i--) {
+    const date = new Date(latestDate);
+    date.setDate(date.getDate() - i);
+    const label = formatDate(date);
+    labels.push(label);
+
     let sum = 0;
     soldArtistItems.forEach((item) => {
       const formattedDateSold = formatDate(new Date(item.dateSold));
@@ -123,8 +130,12 @@ export function initArtistHomePage() {
         sum += item.priceSold;
       }
     });
-    return sum;
-  });
+    chartData.push(sum);
+  }
+
+  const ctx = document.getElementById("myChart");
+
+  const maxValue = Math.max(...chartData);
 
   const myChart = new Chart(ctx, {
     type: "bar",
@@ -144,6 +155,7 @@ export function initArtistHomePage() {
       scales: {
         x: {
           beginAtZero: true,
+          suggestedMax: maxValue * 1.1, // Add 10% padding
         },
         y: {
           beginAtZero: true,
@@ -152,30 +164,34 @@ export function initArtistHomePage() {
     },
   });
 
-  const chartData14 = chartData.map((data) => data / items.priceSold);
-  setTimeout(() => {
-    myChart.data.datasets[0].data = chartData14;
-    myChart.update();
-  }, 3000);
-
   function updateChart(days) {
-    const startDate = new Date();
-    startDate.setDate(startDate.getDate() - days);
+    // Get the latest sale date
+    const latestDate = new Date(Math.max(...soldArtistItems.map(item => new Date(item.dateSold))));
 
-    const labels = generateDateLabels(days);
+    const labels = [];
+    const chartData = [];
 
-    const chartData = labels.map((label) => {
+    for (let i = days - 1; i >= 0; i--) {
+      const date = new Date(latestDate);
+      date.setDate(date.getDate() - i);
+      const label = formatDate(date);
+      labels.push(label);
+
       let sum = 0;
       soldArtistItems.forEach((item) => {
-        if (formatDate(new Date(item.dateSold)) === label) {
+        const formattedDateSold = formatDate(new Date(item.dateSold));
+        if (formattedDateSold === label) {
           sum += item.priceSold;
         }
       });
-      return sum;
-    });
+      chartData.push(sum);
+    }
+
+    const maxValue = Math.max(...chartData);
 
     myChart.data.labels = labels;
     myChart.data.datasets[0].data = chartData;
+    myChart.options.scales.x.suggestedMax = maxValue * 1.1;
     myChart.update();
   }
 
